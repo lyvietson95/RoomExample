@@ -35,4 +35,6 @@ public abstract class RepoDatabase extends RoomDatabase {
     - class have an abstract method with no parameters and returns the class that is annotated with @Dao (in our case: getRepoDao())
      */
     public abstract RepoDao getRepoDao();
+
+    public abstract UserDao getUserDao();
 }

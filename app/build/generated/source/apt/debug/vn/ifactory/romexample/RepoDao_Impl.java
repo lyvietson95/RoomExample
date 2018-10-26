@@ -163,7 +163,7 @@ public class RepoDao_Impl implements RepoDao {
   }
 
   @Override
-  public List<Repo> getRepositoriesForUser(int userId) {
+  public List<Repo> getReposByUserId(int userId) {
     final String _sql = "SELECT * FROM repo WHERE userId=?";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
     int _argIndex = 1;

@@ -15,6 +15,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public static final String TAG = MainActivity.class.getSimpleName();
     TextView txtDisplayRepo;
     Button btnAddObj, btnGetObj;
+
+    RepoDao repoDao;
+    UserDao userDao;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +27,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void addControls() {
+        repoDao = RepoDatabase.getsInstance(MainActivity.this).getRepoDao();
+        userDao = RepoDatabase.getsInstance(MainActivity.this).getUserDao();
+
         txtDisplayRepo = findViewById(R.id.txtDisplayRepo);
         btnAddObj = findViewById(R.id.btnAddObjRepo);
         btnGetObj = findViewById(R.id.btnGetObj);
@@ -56,9 +63,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         @Override
         protected Void doInBackground(Void... voids) {
+            userDao.insert(new Users(69, "sonlv", "sonlv-Http"));
+            userDao.insert(new Users(70, "sonAccount", "sonAccount-Http"));
+
             // add Repo to database
-            RepoDatabase.getsInstance(MainActivity.this).getRepoDao().insert(new Repo("11", "LVS Task", "Http:Son"));
-            RepoDatabase.getsInstance(MainActivity.this).getRepoDao().insert(new Repo("22", "LVS Task 2", "Http:Son2"));
+            repoDao.insert(new Repo("11", "LVS Task", "Http:Son", 69));
+            repoDao.insert(new Repo("22", "LVS Task 2", "Http:Son2", 69));
+            repoDao.insert(new Repo("33", "Repo sonAccount", "Http:sonAccount", 70));
             return null;
         }
 
@@ -72,8 +83,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         @Override
         protected List<Repo> doInBackground(Void... voids) {
-            // add Repo to database
-            List<Repo> repos =  RepoDatabase.getsInstance(MainActivity.this).getRepoDao().getAllRepos();
+            // get all Repo
+            //List<Repo> repos =  RepoDatabase.getsInstance(MainActivity.this).getRepoDao().getAllRepos();
+
+            // get repos by user id
+            List<Repo> repos = repoDao.getReposByUserId(70);
             return repos;
         }
 
