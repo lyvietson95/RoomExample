@@ -9,7 +9,10 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.awt.font.TextAttribute;
+import java.util.Date;
 import java.util.List;
+
+import vn.ifactory.romexample.util.DateConverter;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String TAG = MainActivity.class.getSimpleName();
@@ -55,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void getObjRepo() {
-        //new GetObjRepoTask().execute();
+        new GetObjRepoTask().execute();
         new GetRepositoriesByUserTask().execute();
 
         new GetUserByRepoTask().execute();
@@ -69,18 +72,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         @Override
         protected Void doInBackground(Void... voids) {
-            userDao.insert(new Users(69, "sonlv", "sonlv-Http"));
-            userDao.insert(new Users(70, "sonAccount", "sonAccount-Http"));
+            userDao.insert(new Users(74, "sonlv", "sonlv-Http"));
+            userDao.insert(new Users(75, "sonAccount", "sonAccount-Http"));
 
-            // add Repo to database
-            repoDao.insert(new Repo("11", "Repo 1", "Http:Son"));
-            repoDao.insert(new Repo("22", "Repo 2", "Http:Son2"));
-            repoDao.insert(new Repo("33", "Repo 3", "Http:sonAccount"));
+            /*// add Repo to database
+            repoDao.insert(new Repo("11", "Repo 1", "Http:Son", DateConverter.toDate(1220227200L * 1000)));
+            repoDao.insert(new Repo("22", "Repo 2", "Http:Son2", DateConverter.toDate(1220227200L * 1000)));
+            repoDao.insert(new Repo("33", "Repo 3", "Http:sonAccount", DateConverter.toDate(1220227200L * 1000)));*/
+
+            repoDao.insert(new Repo("44", "Repo 3", "Http:sonAccount", DateConverter.toDate(1220227200L * 1000), "This is repo test"));
 
             // add userRepo for table
-            userRepoJoinDao.insert(new UserRepoJoin(69, "33"));
-            userRepoJoinDao.insert(new UserRepoJoin(69, "22"));
-            userRepoJoinDao.insert(new UserRepoJoin(70, "22"));
+            userRepoJoinDao.insert(new UserRepoJoin(74, "33"));
+            userRepoJoinDao.insert(new UserRepoJoin(75, "22"));
+            userRepoJoinDao.insert(new UserRepoJoin(74, "22"));
 
 
             return null;
@@ -113,7 +118,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 dataRepo += repo.name;
             }
 
-            txtDisplayRepo.setText(dataRepo);
+            //txtDisplayRepo.setText(dataRepo);
         }
     }
 

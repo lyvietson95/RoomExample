@@ -10,7 +10,9 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import vn.ifactory.romexample.util.DateConverter;
 
 @SuppressWarnings("unchecked")
 public class RepoDao_Impl implements RepoDao {
@@ -27,7 +29,7 @@ public class RepoDao_Impl implements RepoDao {
     this.__insertionAdapterOfRepo = new EntityInsertionAdapter<Repo>(__db) {
       @Override
       public String createQuery() {
-        return "INSERT OR ABORT INTO `Repo`(`id`,`name`,`url`) VALUES (?,?,?)";
+        return "INSERT OR ABORT INTO `Repo`(`id`,`name`,`url`,`createAt`,`description`) VALUES (?,?,?,?,?)";
       }
 
       @Override
@@ -46,6 +48,14 @@ public class RepoDao_Impl implements RepoDao {
           stmt.bindNull(3);
         } else {
           stmt.bindString(3, value.url);
+        }
+        final long _tmp;
+        _tmp = DateConverter.fromDate(value.createAt);
+        stmt.bindLong(4, _tmp);
+        if (value.description == null) {
+          stmt.bindNull(5);
+        } else {
+          stmt.bindString(5, value.description);
         }
       }
     };
@@ -67,7 +77,7 @@ public class RepoDao_Impl implements RepoDao {
     this.__updateAdapterOfRepo = new EntityDeletionOrUpdateAdapter<Repo>(__db) {
       @Override
       public String createQuery() {
-        return "UPDATE OR ABORT `Repo` SET `id` = ?,`name` = ?,`url` = ? WHERE `id` = ?";
+        return "UPDATE OR ABORT `Repo` SET `id` = ?,`name` = ?,`url` = ?,`createAt` = ?,`description` = ? WHERE `id` = ?";
       }
 
       @Override
@@ -87,10 +97,18 @@ public class RepoDao_Impl implements RepoDao {
         } else {
           stmt.bindString(3, value.url);
         }
-        if (value.id == null) {
-          stmt.bindNull(4);
+        final long _tmp;
+        _tmp = DateConverter.fromDate(value.createAt);
+        stmt.bindLong(4, _tmp);
+        if (value.description == null) {
+          stmt.bindNull(5);
         } else {
-          stmt.bindString(4, value.id);
+          stmt.bindString(5, value.description);
+        }
+        if (value.id == null) {
+          stmt.bindNull(6);
+        } else {
+          stmt.bindString(6, value.id);
         }
       }
     };
@@ -138,6 +156,8 @@ public class RepoDao_Impl implements RepoDao {
       final int _cursorIndexOfId = _cursor.getColumnIndexOrThrow("id");
       final int _cursorIndexOfName = _cursor.getColumnIndexOrThrow("name");
       final int _cursorIndexOfUrl = _cursor.getColumnIndexOrThrow("url");
+      final int _cursorIndexOfCreateAt = _cursor.getColumnIndexOrThrow("createAt");
+      final int _cursorIndexOfDescription = _cursor.getColumnIndexOrThrow("description");
       final List<Repo> _result = new ArrayList<Repo>(_cursor.getCount());
       while(_cursor.moveToNext()) {
         final Repo _item;
@@ -147,7 +167,13 @@ public class RepoDao_Impl implements RepoDao {
         _tmpName = _cursor.getString(_cursorIndexOfName);
         final String _tmpUrl;
         _tmpUrl = _cursor.getString(_cursorIndexOfUrl);
-        _item = new Repo(_tmpId,_tmpName,_tmpUrl);
+        final Date _tmpCreateAt;
+        final long _tmp;
+        _tmp = _cursor.getLong(_cursorIndexOfCreateAt);
+        _tmpCreateAt = DateConverter.toDate(_tmp);
+        final String _tmpDescription;
+        _tmpDescription = _cursor.getString(_cursorIndexOfDescription);
+        _item = new Repo(_tmpId,_tmpName,_tmpUrl,_tmpCreateAt,_tmpDescription);
         _result.add(_item);
       }
       return _result;

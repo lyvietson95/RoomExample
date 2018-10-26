@@ -30,14 +30,14 @@ public class RepoDatabase_Impl extends RepoDatabase {
 
   @Override
   protected SupportSQLiteOpenHelper createOpenHelper(DatabaseConfiguration configuration) {
-    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(configuration, new RoomOpenHelper.Delegate(1) {
+    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(configuration, new RoomOpenHelper.Delegate(2) {
       @Override
       public void createAllTables(SupportSQLiteDatabase _db) {
-        _db.execSQL("CREATE TABLE IF NOT EXISTS `Repo` (`id` TEXT NOT NULL, `name` TEXT, `url` TEXT, PRIMARY KEY(`id`))");
+        _db.execSQL("CREATE TABLE IF NOT EXISTS `Repo` (`id` TEXT NOT NULL, `name` TEXT, `url` TEXT, `createAt` INTEGER, `description` TEXT, PRIMARY KEY(`id`))");
         _db.execSQL("CREATE TABLE IF NOT EXISTS `Users` (`id` INTEGER NOT NULL, `login` TEXT, `avatar` TEXT, PRIMARY KEY(`id`))");
         _db.execSQL("CREATE TABLE IF NOT EXISTS `user_repo_join` (`userId` INTEGER NOT NULL, `repoId` TEXT NOT NULL, PRIMARY KEY(`userId`, `repoId`), FOREIGN KEY(`userId`) REFERENCES `Users`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION , FOREIGN KEY(`repoId`) REFERENCES `Repo`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )");
         _db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"e5444e0b5e6dc07c5d29b4e373db56d1\")");
+        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"e96dbaad5267bb648f5efd19d91520e3\")");
       }
 
       @Override
@@ -70,10 +70,12 @@ public class RepoDatabase_Impl extends RepoDatabase {
 
       @Override
       protected void validateMigration(SupportSQLiteDatabase _db) {
-        final HashMap<String, TableInfo.Column> _columnsRepo = new HashMap<String, TableInfo.Column>(3);
+        final HashMap<String, TableInfo.Column> _columnsRepo = new HashMap<String, TableInfo.Column>(5);
         _columnsRepo.put("id", new TableInfo.Column("id", "TEXT", true, 1));
         _columnsRepo.put("name", new TableInfo.Column("name", "TEXT", false, 0));
         _columnsRepo.put("url", new TableInfo.Column("url", "TEXT", false, 0));
+        _columnsRepo.put("createAt", new TableInfo.Column("createAt", "INTEGER", false, 0));
+        _columnsRepo.put("description", new TableInfo.Column("description", "TEXT", false, 0));
         final HashSet<TableInfo.ForeignKey> _foreignKeysRepo = new HashSet<TableInfo.ForeignKey>(0);
         final HashSet<TableInfo.Index> _indicesRepo = new HashSet<TableInfo.Index>(0);
         final TableInfo _infoRepo = new TableInfo("Repo", _columnsRepo, _foreignKeysRepo, _indicesRepo);
@@ -111,7 +113,7 @@ public class RepoDatabase_Impl extends RepoDatabase {
                   + " Found:\n" + _existingUserRepoJoin);
         }
       }
-    }, "e5444e0b5e6dc07c5d29b4e373db56d1", "20f75d900bc88746aee451d83ba644f0");
+    }, "e96dbaad5267bb648f5efd19d91520e3", "096a71a3c87d94604855d9be1e0d35f0");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(configuration.context)
         .name(configuration.name)
         .callback(_openCallback)
