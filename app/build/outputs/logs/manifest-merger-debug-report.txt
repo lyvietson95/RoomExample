@@ -1,0 +1,112 @@
+-- Merging decision tree log ---
+manifest
+ADDED from F:\Elearning\Android\Room\RomExample\app\src\main\AndroidManifest.xml:2:1-21:12
+INJECTED from F:\Elearning\Android\Room\RomExample\app\src\main\AndroidManifest.xml:2:1-21:12
+INJECTED from F:\Elearning\Android\Room\RomExample\app\src\main\AndroidManifest.xml:2:1-21:12
+INJECTED from F:\Elearning\Android\Room\RomExample\app\src\main\AndroidManifest.xml:2:1-21:12
+MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\PC\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\e0e1065ab728905949c5cca1c65c1cd3\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\PC\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\6f0ea8239a5e9362b8e679f2a61f551d\AndroidManifest.xml:2:1-11:12
+MERGED from [android.arch.persistence.room:runtime:1.1.1] C:\Users\PC\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\5cf3ddb36e429905c5be21f00308b73f\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\PC\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\32580636d3b43fce3bde4e8abf8a4487\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\PC\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\d091902ee6e1d62f588c1a2080e91998\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\PC\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\81666b9e405d075dc0bfa9cf070e4ad3\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.persistence:db-framework:1.1.1] C:\Users\PC\.gradle\caches\transforms-1\files-1.1\db-framework-1.1.1.aar\4439aa8f35d989afde54cc865b65ed74\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.persistence:db:1.1.1] C:\Users\PC\.gradle\caches\transforms-1\files-1.1\db-1.1.1.aar\00725cb83835e79c440e8b701cb1400f\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\PC\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\2641f195bfa14d4a67cfcecaee97b9ba\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\PC\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\38412580cd7899a4d429e831b51154b3\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:27.1.1] C:\Users\PC\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\bc2aaba5ee612e92e228a1fd98be27a9\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\PC\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\84f66d72156320b70f6296878471edeb\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.1] C:\Users\PC\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\f2b6fe6a88e382c46f419c04ea7e955b\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\PC\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\62f3198347ea42cbab1a08670869f4a4\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\PC\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\0e3051906ecff1265298d5c102576c85\AndroidManifest.xml:17:1-22:12
+INJECTED from F:\Elearning\Android\Room\RomExample\app\src\main\AndroidManifest.xml:2:1-21:12
+INJECTED from F:\Elearning\Android\Room\RomExample\app\src\main\AndroidManifest.xml:2:1-21:12
+INJECTED from F:\Elearning\Android\Room\RomExample\app\src\main\AndroidManifest.xml:2:1-21:12
+	package
+		ADDED from F:\Elearning\Android\Room\RomExample\app\src\main\AndroidManifest.xml:3:5-37
+		INJECTED from F:\Elearning\Android\Room\RomExample\app\src\main\AndroidManifest.xml
+		INJECTED from F:\Elearning\Android\Room\RomExample\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from F:\Elearning\Android\Room\RomExample\app\src\main\AndroidManifest.xml
+		ADDED from F:\Elearning\Android\Room\RomExample\app\src\main\AndroidManifest.xml:2:1-21:12
+		INJECTED from F:\Elearning\Android\Room\RomExample\app\src\main\AndroidManifest.xml
+	android:versionCode
+		INJECTED from F:\Elearning\Android\Room\RomExample\app\src\main\AndroidManifest.xml
+		ADDED from F:\Elearning\Android\Room\RomExample\app\src\main\AndroidManifest.xml:2:1-21:12
+		INJECTED from F:\Elearning\Android\Room\RomExample\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from F:\Elearning\Android\Room\RomExample\app\src\main\AndroidManifest.xml:2:11-69
+application
+ADDED from F:\Elearning\Android\Room\RomExample\app\src\main\AndroidManifest.xml:5:5-19:19
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\PC\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\6f0ea8239a5e9362b8e679f2a61f551d\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\PC\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\6f0ea8239a5e9362b8e679f2a61f551d\AndroidManifest.xml:9:5-20
+	android:supportsRtl
+		ADDED from F:\Elearning\Android\Room\RomExample\app\src\main\AndroidManifest.xml:10:9-35
+	android:label
+		ADDED from F:\Elearning\Android\Room\RomExample\app\src\main\AndroidManifest.xml:8:9-41
+	android:roundIcon
+		ADDED from F:\Elearning\Android\Room\RomExample\app\src\main\AndroidManifest.xml:9:9-54
+	android:icon
+		ADDED from F:\Elearning\Android\Room\RomExample\app\src\main\AndroidManifest.xml:7:9-43
+	android:allowBackup
+		ADDED from F:\Elearning\Android\Room\RomExample\app\src\main\AndroidManifest.xml:6:9-35
+	android:theme
+		ADDED from F:\Elearning\Android\Room\RomExample\app\src\main\AndroidManifest.xml:11:9-40
+activity#vn.ifactory.romexample.MainActivity
+ADDED from F:\Elearning\Android\Room\RomExample\app\src\main\AndroidManifest.xml:12:9-18:20
+	android:name
+		ADDED from F:\Elearning\Android\Room\RomExample\app\src\main\AndroidManifest.xml:12:19-47
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from F:\Elearning\Android\Room\RomExample\app\src\main\AndroidManifest.xml:13:13-17:29
+action#android.intent.action.MAIN
+ADDED from F:\Elearning\Android\Room\RomExample\app\src\main\AndroidManifest.xml:14:17-69
+	android:name
+		ADDED from F:\Elearning\Android\Room\RomExample\app\src\main\AndroidManifest.xml:14:25-66
+category#android.intent.category.LAUNCHER
+ADDED from F:\Elearning\Android\Room\RomExample\app\src\main\AndroidManifest.xml:16:17-77
+	android:name
+		ADDED from F:\Elearning\Android\Room\RomExample\app\src\main\AndroidManifest.xml:16:27-74
+uses-sdk
+INJECTED from F:\Elearning\Android\Room\RomExample\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from F:\Elearning\Android\Room\RomExample\app\src\main\AndroidManifest.xml
+INJECTED from F:\Elearning\Android\Room\RomExample\app\src\main\AndroidManifest.xml
+MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\PC\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\e0e1065ab728905949c5cca1c65c1cd3\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\PC\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\e0e1065ab728905949c5cca1c65c1cd3\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\PC\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\6f0ea8239a5e9362b8e679f2a61f551d\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\PC\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\6f0ea8239a5e9362b8e679f2a61f551d\AndroidManifest.xml:5:5-7:41
+MERGED from [android.arch.persistence.room:runtime:1.1.1] C:\Users\PC\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\5cf3ddb36e429905c5be21f00308b73f\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.persistence.room:runtime:1.1.1] C:\Users\PC\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\5cf3ddb36e429905c5be21f00308b73f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\PC\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\32580636d3b43fce3bde4e8abf8a4487\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\PC\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\32580636d3b43fce3bde4e8abf8a4487\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\PC\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\d091902ee6e1d62f588c1a2080e91998\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\PC\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\d091902ee6e1d62f588c1a2080e91998\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\PC\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\81666b9e405d075dc0bfa9cf070e4ad3\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\PC\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\81666b9e405d075dc0bfa9cf070e4ad3\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.persistence:db-framework:1.1.1] C:\Users\PC\.gradle\caches\transforms-1\files-1.1\db-framework-1.1.1.aar\4439aa8f35d989afde54cc865b65ed74\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.persistence:db-framework:1.1.1] C:\Users\PC\.gradle\caches\transforms-1\files-1.1\db-framework-1.1.1.aar\4439aa8f35d989afde54cc865b65ed74\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.persistence:db:1.1.1] C:\Users\PC\.gradle\caches\transforms-1\files-1.1\db-1.1.1.aar\00725cb83835e79c440e8b701cb1400f\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.persistence:db:1.1.1] C:\Users\PC\.gradle\caches\transforms-1\files-1.1\db-1.1.1.aar\00725cb83835e79c440e8b701cb1400f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\PC\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\2641f195bfa14d4a67cfcecaee97b9ba\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\PC\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\2641f195bfa14d4a67cfcecaee97b9ba\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\PC\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\38412580cd7899a4d429e831b51154b3\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\PC\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\38412580cd7899a4d429e831b51154b3\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] C:\Users\PC\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\bc2aaba5ee612e92e228a1fd98be27a9\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] C:\Users\PC\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\bc2aaba5ee612e92e228a1fd98be27a9\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\PC\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\84f66d72156320b70f6296878471edeb\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\PC\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\84f66d72156320b70f6296878471edeb\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] C:\Users\PC\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\f2b6fe6a88e382c46f419c04ea7e955b\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] C:\Users\PC\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\f2b6fe6a88e382c46f419c04ea7e955b\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\PC\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\62f3198347ea42cbab1a08670869f4a4\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\PC\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\62f3198347ea42cbab1a08670869f4a4\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\PC\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\0e3051906ecff1265298d5c102576c85\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\PC\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\0e3051906ecff1265298d5c102576c85\AndroidManifest.xml:20:5-44
+INJECTED from F:\Elearning\Android\Room\RomExample\app\src\main\AndroidManifest.xml
+INJECTED from F:\Elearning\Android\Room\RomExample\app\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from F:\Elearning\Android\Room\RomExample\app\src\main\AndroidManifest.xml
+		ADDED from F:\Elearning\Android\Room\RomExample\app\src\main\AndroidManifest.xml
+		INJECTED from F:\Elearning\Android\Room\RomExample\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from F:\Elearning\Android\Room\RomExample\app\src\main\AndroidManifest.xml
+		ADDED from F:\Elearning\Android\Room\RomExample\app\src\main\AndroidManifest.xml
+		INJECTED from F:\Elearning\Android\Room\RomExample\app\src\main\AndroidManifest.xml
