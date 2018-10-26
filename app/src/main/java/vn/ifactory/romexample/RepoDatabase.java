@@ -9,7 +9,7 @@ import android.content.Context;
  * Created by PC on 10/25/2018.
  */
 
-@Database(entities = {Repo.class, Users.class}, version = 1)
+@Database(entities = {Repo.class, Users.class, UserRepoJoin.class}, version = 1)
 public abstract class RepoDatabase extends RoomDatabase {
     private static final String DB_NAME = "repoDatabase.db";
     private static volatile RepoDatabase sInstance;
@@ -37,4 +37,6 @@ public abstract class RepoDatabase extends RoomDatabase {
     public abstract RepoDao getRepoDao();
 
     public abstract UserDao getUserDao();
+
+    public abstract UserRepoJoinDao getUserRepoJoinDao();
 }

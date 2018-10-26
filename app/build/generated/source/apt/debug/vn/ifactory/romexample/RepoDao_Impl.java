@@ -27,7 +27,7 @@ public class RepoDao_Impl implements RepoDao {
     this.__insertionAdapterOfRepo = new EntityInsertionAdapter<Repo>(__db) {
       @Override
       public String createQuery() {
-        return "INSERT OR ABORT INTO `Repo`(`id`,`name`,`url`,`userId`) VALUES (?,?,?,?)";
+        return "INSERT OR ABORT INTO `Repo`(`id`,`name`,`url`) VALUES (?,?,?)";
       }
 
       @Override
@@ -47,7 +47,6 @@ public class RepoDao_Impl implements RepoDao {
         } else {
           stmt.bindString(3, value.url);
         }
-        stmt.bindLong(4, value.userId);
       }
     };
     this.__deletionAdapterOfRepo = new EntityDeletionOrUpdateAdapter<Repo>(__db) {
@@ -68,7 +67,7 @@ public class RepoDao_Impl implements RepoDao {
     this.__updateAdapterOfRepo = new EntityDeletionOrUpdateAdapter<Repo>(__db) {
       @Override
       public String createQuery() {
-        return "UPDATE OR ABORT `Repo` SET `id` = ?,`name` = ?,`url` = ?,`userId` = ? WHERE `id` = ?";
+        return "UPDATE OR ABORT `Repo` SET `id` = ?,`name` = ?,`url` = ? WHERE `id` = ?";
       }
 
       @Override
@@ -88,11 +87,10 @@ public class RepoDao_Impl implements RepoDao {
         } else {
           stmt.bindString(3, value.url);
         }
-        stmt.bindLong(4, value.userId);
         if (value.id == null) {
-          stmt.bindNull(5);
+          stmt.bindNull(4);
         } else {
-          stmt.bindString(5, value.id);
+          stmt.bindString(4, value.id);
         }
       }
     };
@@ -140,7 +138,6 @@ public class RepoDao_Impl implements RepoDao {
       final int _cursorIndexOfId = _cursor.getColumnIndexOrThrow("id");
       final int _cursorIndexOfName = _cursor.getColumnIndexOrThrow("name");
       final int _cursorIndexOfUrl = _cursor.getColumnIndexOrThrow("url");
-      final int _cursorIndexOfUserId = _cursor.getColumnIndexOrThrow("userId");
       final List<Repo> _result = new ArrayList<Repo>(_cursor.getCount());
       while(_cursor.moveToNext()) {
         final Repo _item;
@@ -150,42 +147,7 @@ public class RepoDao_Impl implements RepoDao {
         _tmpName = _cursor.getString(_cursorIndexOfName);
         final String _tmpUrl;
         _tmpUrl = _cursor.getString(_cursorIndexOfUrl);
-        final int _tmpUserId;
-        _tmpUserId = _cursor.getInt(_cursorIndexOfUserId);
-        _item = new Repo(_tmpId,_tmpName,_tmpUrl,_tmpUserId);
-        _result.add(_item);
-      }
-      return _result;
-    } finally {
-      _cursor.close();
-      _statement.release();
-    }
-  }
-
-  @Override
-  public List<Repo> getReposByUserId(int userId) {
-    final String _sql = "SELECT * FROM repo WHERE userId=?";
-    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
-    int _argIndex = 1;
-    _statement.bindLong(_argIndex, userId);
-    final Cursor _cursor = __db.query(_statement);
-    try {
-      final int _cursorIndexOfId = _cursor.getColumnIndexOrThrow("id");
-      final int _cursorIndexOfName = _cursor.getColumnIndexOrThrow("name");
-      final int _cursorIndexOfUrl = _cursor.getColumnIndexOrThrow("url");
-      final int _cursorIndexOfUserId = _cursor.getColumnIndexOrThrow("userId");
-      final List<Repo> _result = new ArrayList<Repo>(_cursor.getCount());
-      while(_cursor.moveToNext()) {
-        final Repo _item;
-        final String _tmpId;
-        _tmpId = _cursor.getString(_cursorIndexOfId);
-        final String _tmpName;
-        _tmpName = _cursor.getString(_cursorIndexOfName);
-        final String _tmpUrl;
-        _tmpUrl = _cursor.getString(_cursorIndexOfUrl);
-        final int _tmpUserId;
-        _tmpUserId = _cursor.getInt(_cursorIndexOfUserId);
-        _item = new Repo(_tmpId,_tmpName,_tmpUrl,_tmpUserId);
+        _item = new Repo(_tmpId,_tmpName,_tmpUrl);
         _result.add(_item);
       }
       return _result;

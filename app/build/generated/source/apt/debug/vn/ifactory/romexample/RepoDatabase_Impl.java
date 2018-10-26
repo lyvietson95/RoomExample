@@ -26,21 +26,25 @@ public class RepoDatabase_Impl extends RepoDatabase {
 
   private volatile UserDao _userDao;
 
+  private volatile UserRepoJoinDao _userRepoJoinDao;
+
   @Override
   protected SupportSQLiteOpenHelper createOpenHelper(DatabaseConfiguration configuration) {
     final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(configuration, new RoomOpenHelper.Delegate(1) {
       @Override
       public void createAllTables(SupportSQLiteDatabase _db) {
-        _db.execSQL("CREATE TABLE IF NOT EXISTS `Repo` (`id` TEXT NOT NULL, `name` TEXT, `url` TEXT, `userId` INTEGER NOT NULL, PRIMARY KEY(`id`), FOREIGN KEY(`userId`) REFERENCES `Users`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )");
+        _db.execSQL("CREATE TABLE IF NOT EXISTS `Repo` (`id` TEXT NOT NULL, `name` TEXT, `url` TEXT, PRIMARY KEY(`id`))");
         _db.execSQL("CREATE TABLE IF NOT EXISTS `Users` (`id` INTEGER NOT NULL, `login` TEXT, `avatar` TEXT, PRIMARY KEY(`id`))");
+        _db.execSQL("CREATE TABLE IF NOT EXISTS `user_repo_join` (`userId` INTEGER NOT NULL, `repoId` TEXT NOT NULL, PRIMARY KEY(`userId`, `repoId`), FOREIGN KEY(`userId`) REFERENCES `Users`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION , FOREIGN KEY(`repoId`) REFERENCES `Repo`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )");
         _db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"b4855956998f7eeedc32cdd1c7525177\")");
+        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"e5444e0b5e6dc07c5d29b4e373db56d1\")");
       }
 
       @Override
       public void dropAllTables(SupportSQLiteDatabase _db) {
         _db.execSQL("DROP TABLE IF EXISTS `Repo`");
         _db.execSQL("DROP TABLE IF EXISTS `Users`");
+        _db.execSQL("DROP TABLE IF EXISTS `user_repo_join`");
       }
 
       @Override
@@ -66,13 +70,11 @@ public class RepoDatabase_Impl extends RepoDatabase {
 
       @Override
       protected void validateMigration(SupportSQLiteDatabase _db) {
-        final HashMap<String, TableInfo.Column> _columnsRepo = new HashMap<String, TableInfo.Column>(4);
+        final HashMap<String, TableInfo.Column> _columnsRepo = new HashMap<String, TableInfo.Column>(3);
         _columnsRepo.put("id", new TableInfo.Column("id", "TEXT", true, 1));
         _columnsRepo.put("name", new TableInfo.Column("name", "TEXT", false, 0));
         _columnsRepo.put("url", new TableInfo.Column("url", "TEXT", false, 0));
-        _columnsRepo.put("userId", new TableInfo.Column("userId", "INTEGER", true, 0));
-        final HashSet<TableInfo.ForeignKey> _foreignKeysRepo = new HashSet<TableInfo.ForeignKey>(1);
-        _foreignKeysRepo.add(new TableInfo.ForeignKey("Users", "CASCADE", "NO ACTION",Arrays.asList("userId"), Arrays.asList("id")));
+        final HashSet<TableInfo.ForeignKey> _foreignKeysRepo = new HashSet<TableInfo.ForeignKey>(0);
         final HashSet<TableInfo.Index> _indicesRepo = new HashSet<TableInfo.Index>(0);
         final TableInfo _infoRepo = new TableInfo("Repo", _columnsRepo, _foreignKeysRepo, _indicesRepo);
         final TableInfo _existingRepo = TableInfo.read(_db, "Repo");
@@ -94,8 +96,22 @@ public class RepoDatabase_Impl extends RepoDatabase {
                   + " Expected:\n" + _infoUsers + "\n"
                   + " Found:\n" + _existingUsers);
         }
+        final HashMap<String, TableInfo.Column> _columnsUserRepoJoin = new HashMap<String, TableInfo.Column>(2);
+        _columnsUserRepoJoin.put("userId", new TableInfo.Column("userId", "INTEGER", true, 1));
+        _columnsUserRepoJoin.put("repoId", new TableInfo.Column("repoId", "TEXT", true, 2));
+        final HashSet<TableInfo.ForeignKey> _foreignKeysUserRepoJoin = new HashSet<TableInfo.ForeignKey>(2);
+        _foreignKeysUserRepoJoin.add(new TableInfo.ForeignKey("Users", "NO ACTION", "NO ACTION",Arrays.asList("userId"), Arrays.asList("id")));
+        _foreignKeysUserRepoJoin.add(new TableInfo.ForeignKey("Repo", "NO ACTION", "NO ACTION",Arrays.asList("repoId"), Arrays.asList("id")));
+        final HashSet<TableInfo.Index> _indicesUserRepoJoin = new HashSet<TableInfo.Index>(0);
+        final TableInfo _infoUserRepoJoin = new TableInfo("user_repo_join", _columnsUserRepoJoin, _foreignKeysUserRepoJoin, _indicesUserRepoJoin);
+        final TableInfo _existingUserRepoJoin = TableInfo.read(_db, "user_repo_join");
+        if (! _infoUserRepoJoin.equals(_existingUserRepoJoin)) {
+          throw new IllegalStateException("Migration didn't properly handle user_repo_join(vn.ifactory.romexample.UserRepoJoin).\n"
+                  + " Expected:\n" + _infoUserRepoJoin + "\n"
+                  + " Found:\n" + _existingUserRepoJoin);
+        }
       }
-    }, "b4855956998f7eeedc32cdd1c7525177", "0d149b2f5d91036a611ae69771758a40");
+    }, "e5444e0b5e6dc07c5d29b4e373db56d1", "20f75d900bc88746aee451d83ba644f0");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(configuration.context)
         .name(configuration.name)
         .callback(_openCallback)
@@ -106,7 +122,7 @@ public class RepoDatabase_Impl extends RepoDatabase {
 
   @Override
   protected InvalidationTracker createInvalidationTracker() {
-    return new InvalidationTracker(this, "Repo","Users");
+    return new InvalidationTracker(this, "Repo","Users","user_repo_join");
   }
 
   @Override
@@ -122,6 +138,7 @@ public class RepoDatabase_Impl extends RepoDatabase {
       if (_supportsDeferForeignKeys) {
         _db.execSQL("PRAGMA defer_foreign_keys = TRUE");
       }
+      _db.execSQL("DELETE FROM `user_repo_join`");
       _db.execSQL("DELETE FROM `Repo`");
       _db.execSQL("DELETE FROM `Users`");
       super.setTransactionSuccessful();
@@ -161,6 +178,20 @@ public class RepoDatabase_Impl extends RepoDatabase {
           _userDao = new UserDao_Impl(this);
         }
         return _userDao;
+      }
+    }
+  }
+
+  @Override
+  public UserRepoJoinDao getUserRepoJoinDao() {
+    if (_userRepoJoinDao != null) {
+      return _userRepoJoinDao;
+    } else {
+      synchronized(this) {
+        if(_userRepoJoinDao == null) {
+          _userRepoJoinDao = new UserRepoJoinDao_Impl(this);
+        }
+        return _userRepoJoinDao;
       }
     }
   }

@@ -32,10 +32,6 @@ public interface RepoDao {
         @Query("SELECT * FROM repo WHERE name=:name LIMIT :max")
         List<Repo> getReposByName(int max, String... name);
      */
-
-    @Query("SELECT * FROM repo WHERE userId=:userId")
-    List<Repo> getReposByUserId(int userId);
-
     @Insert
     void insert(Repo... repos);
 
